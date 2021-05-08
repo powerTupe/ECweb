@@ -1,8 +1,49 @@
+<?php 
+session_start();
+$connect = mysqli_connect("localhost", "root", "", "ecommerce");
+
+if(isset($_POST["add_to_cart"]))
+{
+	if(isset($_SESSION["shopping_cart"]))
+	{
+		$item_array_id = array_column($_SESSION["shopping_cart"], "item_id");
+		if(!in_array($_GET["id"], $item_array_id))
+		{
+			$count = count($_SESSION["shopping_cart"]);
+			$item_array = array(
+				'item_id'			=>	$_GET["id"],
+				'item_name'			=>	$_POST["hidden_name"],
+				'item_price'		=>	$_POST["hidden_price"],
+				'item_quantity'		=>	$_POST["quantity"]
+			);
+			$_SESSION["shopping_cart"][$count] = $item_array;
+		}
+		else
+		{
+			echo '<script>alert("Item Already Added")</script>';
+		}
+	}
+	else
+	{
+		$item_array = array(
+			'item_id'			=>	$_GET["id"],
+			'item_name'			=>	$_POST["hidden_name"],
+			'item_price'		=>	$_POST["hidden_price"],
+			'item_quantity'		=>	$_POST["quantity"]
+		);
+		$_SESSION["shopping_cart"][0] = $item_array;
+	}
+}
+
+?>
 <!docktype html>
 <html>
     <head>
         <link rel="stylesheet" href="../css/style.css">
         <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Acme&display=swap" rel="stylesheet">
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -21,7 +62,7 @@
                     </div>
                       <div class="header-set2">
                         <ul id="nav-links">
-                    <li><a href="#">HOME</a></li>
+                    <li><a href="index.php">HOME</a></li>
                     <li><a href="#">ABOUT</a>
                     </li>
                    <li><a href="#">LAPTOP</a>
@@ -47,7 +88,7 @@
                             <li><a href="#">MI</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">OFFERS</a>
+                    <li><a href="cart.php">Cart</a>
                         
                     </li>
                     <li><a href="sign-up.html">SIGN-UP</a>
@@ -62,7 +103,7 @@
             <section>
                 <div class="slideshow-container">
 
-  <!-- Full-width images with number and caption text -->
+  
                     <div class="mySlides fade">
                         <div class="numbertext">1 / 4</div>
                         <img src="../images/download%20(1).jfif" style="width:100%">
@@ -85,80 +126,40 @@
             <div class="shopping">
                 <h1>lets get into shopping!!</h1>
                 <h3>mobile today...</h3>
-                <div class="shopping-cards">
-                    <div class="card" data-aos="zoom-in">
-                        <h4>offer</h4>
-                        <img src="../images/samsung%20galaxy%20A50.jpg">
-                        <p id="name">SAMSUNG GALAXY A50</p>
-                        <p>get up to<b> 40%</b>off</p>
-                        <p id="blue">Price = 10,500/-</p>
-                        <a href="payment.html">buy now</a>
-                    </div>
-                    <div class="card" data-aos="zoom-in">
-                        <h4>offer</h4>
-                        <img src="../images/samsung%20galaxy%20A51.jpg">
-                        <p id="name">SAMSUNG GALAXY A51</p>
-                        <p>get up to<b> 20%</b>off</p>
-                        <p id="blue">Price = 11,500/-</p>
-                        <a href="payment.html">buy now</a>
-                    </div>
-                    <div class="card" data-aos="zoom-in">
-                        <h4>offer</h4>
-                        <img src="../images/samsung%20galaxy%20M30.jpg">
-                        <p id="name">SAMSUNG GALAXY M30</p>
-                        <p>get up to<b> 30%</b></p>
-                        <p id="blue">Price = 10,999/-</p>
-                        <a href="payment.html">buy now</a>
-                    </div>
-                    <div class="card" data-aos="zoom-in">
-                        <h4>offer</h4>
-                        <img src="../images/130683-v6-nokia-8.1-mobile-phone-medium-1.jpg">
-                        <p id="name">NOKIA 8.1</p>
-                        <p>get flat<b> 15%</b>off</p>
-                        <p id="blue">Price = 17,500/-</p>
-                        <a href="payment.html">buy now</a>
-                    </div>
-                    <div class="card" data-aos="zoom-in">
-                        <h4>offer</h4>
-                        <img src="../images/135171-v4-nokia-7.2-mobile-phone-medium-1.jpg">
-                        <p id="name">NOKIA 7.1</p>
-                        <p>get up to<b> 10%</b>off</p>
-                        <p id="blue">Price = 16,999/-</p>
-                        <a href="payment.html">buy now</a>
-                    </div>
-                    <div class="card" data-aos="zoom-in">
-                        <h4>offer</h4>
-                        <img src="../images/135258-v5-xiaomi-redmi-note-8-pro-mobile-phone-medium-1.jpg">
-                        <p id="name">xiaomi redmi note 8 pro</p>
-                        <p>get up to<b> 50%</b>off</p>
-                        <p id="blue">Price = 10,500/-</p>
-                        <a href="payment.html">buy now</a>
-                    </div>
-                    <div class="card" data-aos="zoom-in">
-                        <h4>offer</h4>
-                        <img src="../images/137046-v6-xiaomi-redmi-note-9-pro-mobile-phone-medium-1.jpg">
-                        <p id="name">XIOMI NOTE 9 PRO</p>
-                        <p>get up to<b> 10%</b>off</p>
-                        <p id="blue">Price = 10,500/-</p>
-                        <a href="payment.html">buy now</a>
-                    </div>
-                    <div class="card" data-aos="zoom-in">
-                        <h4>offer</h4>
-                        <img src="../images/135857-v3-apple-iphone-11-pro-max-mobile-phone-medium-1.jpg">
-                        <p id="name">APPLE 11 PRO</p>
-                        <p>get up to<b> 35%</b>off</p>
-                        <p id="blue">Price = 69,599/-</p>
-                        <a href="payment.html">buy now</a>
-                    </div>
-                    <div class="card" data-aos="zoom-in">
-                        <h4>offer</h4>
-                        <img src="../images/115054-v6-nokia-9-mobile-phone-medium-1.jpg">
-                        <p id="name">NOKIA 9</p>
-                        <p>get up to<b> 45%</b>off</p>
-                        <p id="blue">Price = 10,500/-</p>
-                        <a href="payment.html">buy now</a>
-                    </div>
-                </div>    
+                
+                <?php
+				$query = "SELECT * FROM tbl_product ORDER BY id ASC";
+				$result = mysqli_query($connect, $query);
+				if(mysqli_num_rows($result) > 0)
+				{
+					while($row = mysqli_fetch_array($result))
+					{
+				?>
+			    <div class="col-md-4">
+				<form method="post" action="index.php?action=add&id=<?php echo $row["id"]; ?>">
+					<div style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px; padding:16px;" align="center">
+						<img src="images/<?php echo $row["image"]; ?>" class="img-responsive" /><br />
+
+						<h4 class="text-info"><?php echo $row["name"]; ?></h4>
+
+						<h4 class="text-danger">$ <?php echo $row["price"]; ?></h4>
+
+						<input type="text" name="quantity" value="1" class="form-control" />
+
+						<input type="hidden" name="hidden_name" value="<?php echo $row["name"]; ?>" />
+
+						<input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" />
+
+						<input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-success" value="Add to Cart" />
+
+					</div>
+				</form>
+			    </div>
+                <?php
+					}
+				}
+			?>
+               
                 <h3>laptop today...</h3>
                   <div class="shopping-cards">
                     <div class="card" data-aos="zoom-in-right">
@@ -286,8 +287,8 @@
                     </div>
                     
                 </div>
-            <h3>trending ....</h3>
-            <div class="shopping-cards">
+                <h3>trending ....</h3>
+                <div class="shopping-cards">
                     <div class="card" data-aos="zoom-out-down">
                     <h4>offer</h4>
                         <img src="../images/115054-v6-nokia-9-mobile-phone-medium-1.jpg">
@@ -407,5 +408,9 @@
         
         <script>AOS.init();</script>
         <script src="../js/main.js"></script>
+        </div>
     </body>
 </html>
+}
+}}
+?>
