@@ -1,0 +1,330 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Acme', sans-serif;
+}
+.main-container{
+    width: 95%;
+    margin: auto;
+}
+
+header{
+    width: 100%;
+    height: 100px;
+    position: relative;
+    z-index: 999;
+}
+header .nav-container{
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100px;
+    margin: auto;
+    background-color: white;
+}
+.nav-container .nav-logo{
+    display: flex;
+    width: 30%;
+}
+.nav-logo span{
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+.nav-container .nav-logo img{
+    width: 120px;
+    height: 70px;
+    display: flex;
+    justify-content: flex-start;
+    padding: auto 20px;
+}
+.nav-container .nav-search{
+    width: 30%;
+}
+.nav-container .nav-search input{
+    width: 400px;
+    margin-top: 30px;
+    padding: 10px 20px;
+    border-radius: 15px;
+}
+.header-set2{
+    width: 50%;
+    margin: 22px auto;
+}
+#nav-links{
+    display: flex;
+    justify-content: space-between;
+}
+#nav-links li{
+    list-style: none;
+    text-transform: capitalize;
+    padding: 10px;
+    font-size: 18px;
+}
+#nav-links li a{
+    text-decoration: none;
+    color: black;
+}
+#nav-links li:hover a{
+    transition: all 0.4s ease;
+    color: dodgerblue;
+}
+#nav-links li:hover{
+    transition: all 0.4s ease;
+    border-bottom: 1px solid #fca700;
+} 
+#nav-links li:hover ul li{
+    display: block;
+    z-index: 997;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-size: 16px;
+    padding: 10px;
+}
+#nav-links li:hover ul{
+    padding: 0px;
+    margin-top: 5px;
+}
+#nav-links li:hover {
+    background-color: white;
+}
+#nav-links li ul li{
+    display: none;
+}
+/*section code*/
+
+.slideshow-container {
+    position: relative;
+    margin: auto;
+    width: 100%;
+    
+}
+.mySlides {
+  display: block;
+}
+.mySlides img{
+    width: 100%;
+    height: 620px;
+} 
+.numbertext {
+  color: #f2f2f2;
+  font-size: 18px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+/*shopping cartds*/
+
+.shopping{
+    width: 100%;
+    box-sizing: border-box;
+}
+.shopping h1{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+}
+.shopping h3{
+    font-size: 32px;
+    text-transform: capitalize;
+    width: 90%;
+    margin: 15px auto 0px;
+    text-align: center;
+    color: dodgerblue;
+    text-shadow: 2px 2px 2px goldenrod;
+}
+.shopping .shopping-cards{
+    width: 90%;
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 10px 20px;
+    border-bottom: 1px solid gray;
+    overflow-x: scroll;
+}
+.shopping-cards .card{
+    padding: 15px;
+    margin-right: 5px;
+    border-radius: 5px;
+}
+.shopping-cards .card:hover{
+    box-shadow: 5px 5px 5px 5px black;
+    transition: all 0.5s ease;
+}
+.shopping-cards .card img{
+    width: 350px;
+    height: 400px;
+}
+.shopping-cards .card h4{
+    padding: 5px 15px;
+    font-size: 18px;
+    text-transform: capitalize;
+}
+.card p{
+    text-transform: capitalize;
+    text-align: center;
+    font-size: 22px;
+    margin-top: 10px;
+}
+#blue{
+    color: dodgerblue;
+    text-shadow: 1px 1px 1px dodgerblue;
+}
+.card a{
+    border: 1px solid black;
+    padding: 8px 20px;
+    display: flex;
+    font-size: 18px;
+    justify-content: center;
+    text-decoration: none;
+    text-transform: capitalize;
+    color: white;
+    background-color: dodgerblue;
+    margin-top: 5px;
+}
+.card a:hover{
+    transition: all 0.5s ease;
+    color: dodgerblue;
+    background-color: white;
+}
+#name{
+    text-transform: uppercase;
+    color: dodgerblue;
+    font-size: 20px;
+    font-weight: bold;
+}
+/*containers*/
+.container-8{
+    width: 85%;
+    margin: auto;
+}
+.container-8-block{
+    margin-bottom: 75px;
+}
+.container-8-heading{
+    margin-top: 50px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+.container-8-heading h1,.container-8-heading p{
+    margin-bottom: 20px;
+}
+.container-8-blog{
+    display:flex;
+    overflow: hidden;
+    justify-content: space-between;
+}
+.container-8-blog .img{
+    margin-bottom: 20px;
+    width: 320px;
+    height: 200px;
+    transition: all 0.4 ease;
+}
+.container-8-blog span{
+    background-color: black;
+    color: white;
+    padding: 5px;
+    text-align: center;
+}
+.container-8-blog h3{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.container-8-blog .blog-1:hover h3{
+    transition: all 0.4s ease;
+    color: #fab700;
+    cursor: pointer;
+}
+.container-8-blog .blog-2:hover h3{
+    transition: all 0.4s ease;
+    color: #fab700;
+    cursor: pointer;
+}
+.container-8-blog .blog-3:hover h3{
+    transition: all 0.4s ease;
+    color: #fab700;
+    cursor: pointer;
+}
+.container-8-blog .blog-4:hover h3{
+    transition: all 0.4s ease;
+    color: #fab700;
+    cursor: pointer;
+}
+.container-8-blog p{
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+
+footer{
+    widows: 100%;
+    background-color: #04091e;
+    height: 450px;
+}
+.footer-block{
+    width: 80%;
+    margin: auto;  
+}
+.footer-block-wrap{
+    display: flex;
+    color: white;
+}
+.footer-block-wrap .links{
+    flex: 1;
+    margin-top: 100px;
+}
+.footer-block-wrap .links ul{
+    list-style: none;
+}
+.footer-block-wrap .links ul li{
+    margin-top: 15px;
+}
+.links h4{
+    margin-top: 10px;
+}
+.links input{
+    margin-top: 15px;
+    padding: 5px;
+}
+.links span{
+    padding: 6px;
+    background-color: #fab700;
+    color: white;
+}
+::-webkit-scrollbar {
+  width: 1px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: dodgerblue;
+  border-radius: 20px;
+}
+/*model section*/
+
+
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
